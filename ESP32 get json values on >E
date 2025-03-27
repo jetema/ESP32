@@ -1,0 +1,22 @@
+>D 48
+pow=0
+volt=0
+curr=0
+tmp="WebSend [192.168.1.198/cm?cmnd=Status%2010]"
+
+>S
+if upsecs%5==0
+then
+=>%tmp%
+endif
+
+>E
+pow=gwr("\"Power\":" 2)
+volt=gwr("\"Voltage\":" 2)
+curr=gwr("\"Current\":" 2)
+print %pow%
+print %volt%
+print %curr%
+
+>W
+Tension %0volt%V | Corriente %curr%A | Potencia %0pow%W
